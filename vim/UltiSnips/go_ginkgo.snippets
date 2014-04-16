@@ -1,0 +1,47 @@
+extends go
+
+snippet Con "Context block" !b
+Context("${1:Context}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet Des "Describe block" !b
+Describe("${1:Describe}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet "Befo?" "BeforeEach block" !rb
+BeforeEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet "Aft?" "AfterEach block" !rb
+AfterEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet It "It test block" !b
+It("${1:It}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet "Exp?" "Expectation" !rb
+Expect(${1:expect})
+endsnippet
+
+snippet To "To check" i
+To(${1:To})
+endsnippet
+
+snippet ToNot "ToNot check" i
+ToNot(${1:ToNot})
+endsnippet
+
+snippet Eq "Equal check" i
+Equal(${1:Equal})
+endsnippet

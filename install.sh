@@ -27,7 +27,7 @@ for name in *; do
       echo "Deleted $target"
     fi
 
-    ln -s "$PWD/$name" "$target"
+    ln -sf "$PWD/$name" "$target"
     echo "Linked $PWD/$name to $target."
   fi
 done

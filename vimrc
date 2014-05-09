@@ -56,18 +56,18 @@ let g:syntastic_sass_checkers          = ['sass']
 
 " Tabulararize
 if exists(":Tabularize")
-  nmap <leader>t= :Tabularize /=<CR>
-  vmap <leader>t= :Tabularize /=<CR>
-  nmap <leader>t{ :Tabularize /{<CR>
-  vmap <leader>t{ :Tabularize /{<CR>
-  nmap <leader>t: :Tabularize /:\zs<CR>
-  vmap <leader>t: :Tabularize /:\zs<CR>
-  nmap <leader>t, :Tabularize /,\zs<CR>
-  vmap <leader>t, :Tabularize /,\zs<CR>
-  nmap <leader>t> :Tabularize /=><CR>
-  vmap <leader>t> :Tabularize /=><CR>
-  nmap <leader>t\| :Tabularize /\|<CR>
-  vmap <leader>t\| :Tabularize /\|<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <leader>t= :Tabularize /=/<CR>
+  vmap <leader>t= :Tabularize /=/<CR>
+  nmap <leader>t{ :Tabularize /{/<CR>
+  vmap <leader>t{ :Tabularize /{/<CR>
+  nmap <leader>t: :Tabularize /:\zs/<CR>
+  vmap <leader>t: :Tabularize /:\zs/<CR>
+  nmap <leader>t, :Tabularize /,\zs/<CR>
+  vmap <leader>t, :Tabularize /,\zs/<CR>
+  nmap <leader>t> :Tabularize /=>/<CR>
+  vmap <leader>t> :Tabularize /=>/<CR>
+  nmap <leader>t\| :Tabularize /\|/<CR>
+  vmap <leader>t\| :Tabularize /\|/<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
 "

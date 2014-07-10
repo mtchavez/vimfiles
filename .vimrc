@@ -89,6 +89,7 @@ set number
 set guioptions=aAce
 set splitbelow
 set splitright
+set colorcolumn=80
 
 "
 " Syntax Specific

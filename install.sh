@@ -2,12 +2,12 @@
 
 # install vundle
 echo "Installing vundle..."
-  if [ -d "~/.vim/bundle/Vundle.vim" ]; then
+  if [ ! \(-e "~/.vim/bundle/Vundle.vim" \) ]; then
+    git clone http://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+  else
     pushd ~/.vim/bundle/Vundle.vim
     git pull
     popd
-  else
-    git clone http://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
   fi
 echo "Done installing vundle."
 

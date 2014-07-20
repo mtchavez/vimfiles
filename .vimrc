@@ -32,6 +32,12 @@ set shortmess=ITao
 set expandtab
 
 "
+" CtrlP
+"
+let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|\/vendor)$'
+let g:ctrlp_show_hidden = 1
+
+"
 " Searching
 "
 set hlsearch            " highlight searches
@@ -128,7 +134,7 @@ if has("wildmenu")
   set wildignore+=*~,*.swp,*.swo,*.tmp,*.un~,*.log
   set wildignore+=*.vagrant/,*.env/
   set wildignore+=*log/*,*tmp/*,*script/*,*classes/*,*static_components/*,deploy/*
-  set wildignore+=*node_modules/*,*.bundle/*,*vendor/*
+  set wildignore+=*node_modules/*,*.bundle/*,*vendor/*,vendor/ruby/*
 endif
 
 "

@@ -12,7 +12,7 @@ echo "Installing vundle..."
 echo "Done installing vundle."
 
 echo "Rsync vimfiles over"
-rsync --exclude ".git" --exclude "install.sh" --exclude "LICENSE" --exclude "*.un~" \
+rsync --exclude ".git" --exclude ".gitignore" --exclude "install.sh" --exclude "LICENSE" --exclude "*.un~" \
     --exclude "README.md" --exclude ".DS_Store" -av --no-perms . ~
 
 mvim -c PluginInstall! -c PluginClean! -c q -c q

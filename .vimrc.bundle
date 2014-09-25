@@ -14,15 +14,19 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'flazz/vim-colorschemes'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'Shougo/neosnippet.vim'
+Bundle 'Shougo/neosnippet-snippets'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'flazz/vim-colorschemes'
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'rking/ag.vim'
 Plugin 'peterhost/vim-markdown-preview'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Language Specific

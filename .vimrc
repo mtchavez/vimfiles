@@ -45,7 +45,9 @@ set incsearch           " do incremental searching
 set showmatch           " jump to matches when entering regexp
 set ignorecase          " ignore case when searching
 
+"
 " Syntastic
+"
 let g:syntastic_mode_map = {
   \ 'mode': 'active',
   \ 'active_filetypes': [],
@@ -60,7 +62,33 @@ let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
 let g:syntastic_ruby_checkers          = ['mri', 'rubocop']
 let g:syntastic_sass_checkers          = ['sass']
 
+"
+" Completion / Snippets
+"
+"
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#auto_completion_start_length = 1
+let g:neocomplete#sources#buffer#cache_limit_size = 50000
+let g:neocomplete#data_directory = $HOME.'/.vim/cache/noecompl'
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#enable_auto_select = 1
+
+if !exists('g:neocomplete#keyword_patterns')
+let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" Neosnippet
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+"
 " Tabulararize
+"
 if exists(":Tabularize")
   nmap <leader>t= :Tabularize /=/<CR>
   vmap <leader>t= :Tabularize /=/<CR>
@@ -96,6 +124,12 @@ set guioptions=aAce
 set splitbelow
 set splitright
 set colorcolumn=80
+
+if has('gui_running')
+  set guifont=Monaco:h13    " set fonts for gui vim
+  " set transparency=5        " set transparent window
+  " set guioptions=egmrt  " hide the gui menubar
+endif
 
 "
 " Syntax Specific
@@ -165,6 +199,9 @@ let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 "
 " Functions

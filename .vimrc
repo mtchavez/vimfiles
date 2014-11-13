@@ -7,6 +7,9 @@ if filereadable(expand('~/.vimrc.bundle'))
   source $HOME/.vimrc.bundle
 endif
 
+" Re-source vimrc
+autocmd BufWritePost ~/.vimrc source %
+
 "
 " Shortcuts
 "
@@ -153,6 +156,8 @@ let g:go_highlight_trailing_whitespace_error=1
 " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+noremap <leader><leader>f :Autoformat<CR><CR>
 
 "
 " TComment

@@ -28,6 +28,7 @@ Plugin 'rking/ag.vim'
 Plugin 'peterhost/vim-markdown-preview'
 " Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'Chiel92/vim-autoformat'
 
 " Language Specific
 Plugin 'Glench/Vim-Jinja2-Syntax'

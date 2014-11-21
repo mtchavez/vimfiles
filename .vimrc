@@ -92,20 +92,20 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "
 " Tabulararize
 "
-if exists(":Tabularize")
-  nmap <leader>t= :Tabularize /=/<CR>
-  vmap <leader>t= :Tabularize /=/<CR>
-  nmap <leader>t{ :Tabularize /{/<CR>
-  vmap <leader>t{ :Tabularize /{/<CR>
-  nmap <leader>t: :Tabularize /:\zs/<CR>
-  vmap <leader>t: :Tabularize /:\zs/<CR>
-  nmap <leader>t, :Tabularize /,\zs/<CR>
-  vmap <leader>t, :Tabularize /,\zs/<CR>
-  nmap <leader>t> :Tabularize /=>/<CR>
-  vmap <leader>t> :Tabularize /=>/<CR>
-  nmap <leader>t\| :Tabularize /\|/<CR>
-  vmap <leader>t\| :Tabularize /\|/<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+" if exists(":Tabularize")
+"   nmap <leader>t= :Tabularize /=/<CR>
+"   vmap <leader>t= :Tabularize /=/<CR>
+"   nmap <leader>t{ :Tabularize /{/<CR>
+"   vmap <leader>t{ :Tabularize /{/<CR>
+"   nmap <leader>t: :Tabularize /:\zs/<CR>
+"   vmap <leader>t: :Tabularize /:\zs/<CR>
+"   nmap <leader>t, :Tabularize /,\zs/<CR>
+"   vmap <leader>t, :Tabularize /,\zs/<CR>
+"   nmap <leader>t> :Tabularize /=>/<CR>
+"   vmap <leader>t> :Tabularize /=>/<CR>
+"   nmap <leader>t\| :Tabularize /\|/<CR>
+"   vmap <leader>t\| :Tabularize /\|/<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
+" endif
 
 "
 " Powerline
@@ -148,6 +148,16 @@ let g:go_highlight_chan_whitespace_error=1
 let g:go_highlight_extra_types=1
 let g:go_highlight_space_tab_error=1
 let g:go_highlight_trailing_whitespace_error=1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+au FileType go nmap <leader><leader>gr :GoRun<CR><CR>
+au FileType go nmap <leader><leader>gb :GoBuild<CR><CR>
+au FileType go nmap <leader><leader>gt :GoTest<CR><CR>
+au FileType go nmap <leader><leader>gc :GoCoverage<CR><CR>
+au FileType go nmap <leader><leader>gl :GoLint<CR><CR>
+au Filetype go nnoremap <leader><leader>gd :vsplit <CR>:exe "GoDef" <CR><CR>
 "au BufWritePost *.go !gofmt -w %
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 

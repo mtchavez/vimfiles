@@ -158,6 +158,8 @@ au FileType go nmap <leader><leader>gt :GoTest<CR><CR>
 au FileType go nmap <leader><leader>gc :GoCoverage<CR><CR>
 au FileType go nmap <leader><leader>gl :GoLint<CR><CR>
 au Filetype go nnoremap <leader><leader>gd :vsplit <CR>:exe "GoDef" <CR><CR>
+" Imports turned off by default now
+let g:go_fmt_command = "goimports"
 "au BufWritePost *.go !gofmt -w %
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 

@@ -39,6 +39,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'fatih/vim-go'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
 " vim-scripts repos
 Plugin 'L9'

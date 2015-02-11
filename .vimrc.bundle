@@ -15,9 +15,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown' " goes after tabular
 Plugin 'tpope/vim-surround'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'flazz/vim-colorschemes'
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}

@@ -171,6 +171,9 @@ let g:go_fmt_command = "goimports"
 
 noremap <leader><leader>f :Autoformat<CR><CR>
 
+" Markdown
+let g:vim_markdown_no_default_key_mappings=1
+
 "
 " TComment
 "

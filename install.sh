@@ -28,7 +28,7 @@ do
 done
 
 if [ -n "$UPDATE" ]; then
-    mvim -c PluginInstall! -c PluginClean! -c q -c q
+    mvim -c PluginInstall! -c PluginClean! -c q -c q +qall
 else
     echo "Skipping plugin update; pass -u if you want to update plugins"
 fi

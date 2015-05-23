@@ -129,9 +129,11 @@ set splitright
 set colorcolumn=80
 
 if has('gui_running')
-  set guifont=Monaco:h13    " set fonts for gui vim
+  set guifont=FiraCode-Regular:h13    " set fonts for gui vim
   " set transparency=5        " set transparent window
   " set guioptions=egmrt  " hide the gui menubar
+else
+  set background=dark
 endif
 
 "

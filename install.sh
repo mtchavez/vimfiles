@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#
 # install vundle
 echo "Installing vundle..."
 if [ ! -d "~/vim/bundle" ]; then

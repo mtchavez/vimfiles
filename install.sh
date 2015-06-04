@@ -19,7 +19,7 @@ echo
 
 echo "----> Rsync vimfiles over"
 echo
-rsync --exclude ".git" --exclude ".gitignore" --exclude ".vim/bundle"--exclude "install.sh" --exclude "ycm-update.sh" --exclude "*.un~" \
+rsync --exclude ".git" --exclude ".gitignore" --exclude ".vim/bundle" --exclude "install.sh" --exclude "ycm-update.sh" --exclude "*.un~" \
     --exclude "README.md" --exclude ".DS_Store" -av --no-perms . ~
 
 # Ensure bundle dir

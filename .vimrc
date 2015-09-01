@@ -196,7 +196,7 @@ if has("wildmenu")
   set wildignore+=.DS_Store,.git,.hg,.svn
   set wildignore+=*~,*.swp,*.swo,*.tmp,*.un~,*.log
   set wildignore+=*.vagrant/,*.env/
-  set wildignore+=*log/*,*tmp/*,*script/*,*classes/*,*static_components/*,deploy/*
+  set wildignore+=*log/*,*tmp/*,*classes/*,*static_components/*,deploy/*
   set wildignore+=*node_modules/*,*.bundle/*,*vendor/*,vendor/ruby/*
 endif
 

@@ -127,7 +127,7 @@ set guioptions=aAce
 set splitbelow
 set splitright
 set colorcolumn=80
-set guifont=Fira\ Code\ Regular:h13
+set guifont=FiraCode-Regular:h13
 
 if has('gui_running')
   set guifont=FiraCode-Regular:h13    " set fonts for gui vim

@@ -1,2 +1,2 @@
 " Set font
-set guifont=Fira\ Code\ Regular:h13
+set guifont=FiraCode-Regular:h13

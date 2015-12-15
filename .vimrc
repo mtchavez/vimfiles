@@ -62,8 +62,9 @@ let g:syntastic_python_pep8_args       = '--ignore=E221,E501,E502,W391 --max-lin
 let g:syntastic_javascript_checkers    = ['jshint']
 let g:syntastic_coffee_checkers        = ['coffeelint', 'coffee']
 let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
-let g:syntastic_ruby_checkers          = ['mri', 'rubocop']
+let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']
 let g:syntastic_sass_checkers          = ['sass']
+let g:syntastic_shell                  = "/bin/sh"
 
 "
 " Completion / Snippets

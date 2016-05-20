@@ -59,7 +59,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-double_quoted_strings-check --no-variable_scope-check --no-class_parameter_defaults'
 let g:syntastic_python_checkers        = ['pyflakes', 'pep8']
 let g:syntastic_python_pep8_args       = '--ignore=E221,E501,E502,W391 --max-line-length=1000'
-let g:syntastic_javascript_checkers    = ['jshint']
+let g:syntastic_javascript_checkers    = ['eslint']
 let g:syntastic_coffee_checkers        = ['coffeelint', 'coffee']
 let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
 let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']

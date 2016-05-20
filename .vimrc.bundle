@@ -40,6 +40,8 @@ Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " vim-scripts repos
 Plugin 'L9'

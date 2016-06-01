@@ -93,20 +93,18 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "
 " Tabulararize
 "
-if exists(":Tabularize")
-  nmap <leader>t= :Tabularize /=<CR>
-  vmap <leader>t= :Tabularize /=<CR>
-  nmap <leader>t{ :Tabularize /{<CR>
-  vmap <leader>t{ :Tabularize /{<CR>
-  nmap <leader>t: :Tabularize /:\zs<CR>
-  vmap <leader>t: :Tabularize /:\zs<CR>
-  nmap <leader>t, :Tabularize /,\zs<CR>
-  vmap <leader>t, :Tabularize /,\zs<CR>
-  nmap <leader>t> :Tabularize /=><CR>
-  vmap <leader>t> :Tabularize /=><CR>
-  nmap <leader>t\| :Tabularize /\|<CR>
-  vmap <leader>t\| :Tabularize /\|<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+nmap <leader><leader>t= :Tabularize /=<CR>
+vmap <leader><leader>t= :Tabularize /=<CR>
+nmap <leader><leader>t{ :Tabularize /{<CR>
+vmap <leader><leader>t{ :Tabularize /{<CR>
+nmap <leader><leader>t: :Tabularize /:\zs<CR>
+vmap <leader><leader>t: :Tabularize /:\zs<CR>
+nmap <leader><leader>t, :Tabularize /,\zs<CR>
+vmap <leader><leader>t, :Tabularize /,\zs<CR>
+nmap <leader><leader>t> :Tabularize /=><CR>
+vmap <leader><leader>t> :Tabularize /=><CR>
+nmap <leader><leader>t\| :Tabularize /\|<CR>
+vmap <leader><leader>t\| :Tabularize /\|<CR> vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "
 " Powerline

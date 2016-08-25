@@ -4,7 +4,7 @@
 #
 
 YCM_DIR=$HOME/.vim/bundle/YouCompleteMe
-YCM_OPTS="--clang-completer --gocode-completer"
+YCM_OPTS="--clang-completer --gocode-completer --racer-completer --tern-completer"
 
 if [ ! -d $YCM_DIR ]
 then
@@ -14,7 +14,7 @@ fi
 
 pushd $YCM_DIR > /dev/null
     if [ ! -f $HOME/.ycm_installed ]; then
-        ./install.sh $YCM_OPTS
+        python ./install.py $YCM_OPTS
         if [ $? == 0 ]; then
             touch $HOME/.ycm_installed
         fi

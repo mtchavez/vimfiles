@@ -1,2 +1,2 @@
 " Set font
-set guifont=FiraCode-Regular:h13
+set guifont=FuraMonoForPowerlineNerdFontCompleteMono---Medium:h13

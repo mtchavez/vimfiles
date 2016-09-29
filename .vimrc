@@ -11,6 +11,45 @@ endif
 autocmd BufWritePost ~/.vimrc source %
 
 "
+" UI / Interface
+"
+set encoding=utf-8
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+set number
+set guioptions=aAce
+set splitbelow
+set splitright
+set colorcolumn=80
+" set guifont=FiraCode-Retina:h13
+set guifont=FuraMonoForPowerlineNerdFontCompleteMono---Medium:h13
+
+if has('gui_running')
+  set guifont=FuraMonoForPowerlineNerdFontCompleteMono---Medium:h13
+  " set transparency=5        " set transparent window
+  " set guioptions=egmrt  " hide the gui menubar
+else
+  set background=dark
+endif
+
+" vim-devicons
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+let g:webdevicons_enable                    = 1
+let g:webdevicons_enable_ctrlp              = 1
+let g:webdevicons_enable_nerdtree           = 1
+let g:webdevicons_enable_airline_tabline    = 1
+let g:webdevicons_enable_airline_statusline = 1
+
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_nerdtree = 1
+
+"
 " Shortcuts
 "
 nmap <leader>l :set list!<CR>
@@ -33,6 +72,12 @@ set nocompatible
 set runtimepath+=$GOROOT/misc/vim
 set shortmess=ITao
 set expandtab
+
+"
+" vim-airline
+"
+let g:airline_powerline_fonts = 1
+let g:airline_theme='molokai'
 
 "
 " CtrlP
@@ -65,6 +110,34 @@ let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
 let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']
 let g:syntastic_sass_checkers          = ['sass']
 let g:syntastic_shell                  = "/bin/sh"
+
+"
+" NERDTree
+"
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 30
+autocmd FileType nerdtree setlocal nolist
+" Close if only NERDTree is open
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 "
 " Completion / Snippets
@@ -110,31 +183,9 @@ vmap <leader><leader>t\| :Tabularize /\|<CR> vmap <Leader>a: :Tabularize /:\zs<C
 " Powerline
 "
 set laststatus=2
-set encoding=utf-8
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
 set noshowmode
-
-"
-" UI / Interface
-"
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
-set number
-set guioptions=aAce
-set splitbelow
-set splitright
-set colorcolumn=80
-set guifont=FiraCode-Retina:h13
-
-if has('gui_running')
-  set guifont=FiraCode-Retina:h13    " set fonts for gui vim
-  " set transparency=5        " set transparent window
-  " set guioptions=egmrt  " hide the gui menubar
-else
-  set background=dark
-endif
 
 "
 " Syntax Specific

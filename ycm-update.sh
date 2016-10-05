@@ -12,11 +12,26 @@ then
     exit 0
 fi
 
+while getopts "u" option
+do
+    case "$option" in
+    u)
+        UPDATE=1
+        ;;
+    esac
+done
+
+function update_ycm() {
+    python ./install.py $YCM_OPTS
+    if [ $? == 0 ]; then
+        touch $HOME/.ycm_installed
+    fi
+}
+
 pushd $YCM_DIR > /dev/null
-    if [ ! -f $HOME/.ycm_installed ]; then
-        python ./install.py $YCM_OPTS
-        if [ $? == 0 ]; then
-            touch $HOME/.ycm_installed
-        fi
+    if [ -n "$UPDATE" ] || [ ! -f $HOME/.ycm_installed ]; then
+        update_ycm
+    else
+        echo "----> Skipping YouCompleteMe update; pass -u if you want to re-install/update"
     fi
 popd

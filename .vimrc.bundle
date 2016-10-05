@@ -43,6 +43,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'slim-template/vim-slim'
 
 " Snippets
 Plugin 'justinj/vim-react-snippets'

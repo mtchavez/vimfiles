@@ -8,7 +8,7 @@ call vundle#begin()
 " Manage vundle itself
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'

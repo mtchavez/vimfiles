@@ -29,6 +29,7 @@ Plugin 'rking/ag.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Language Specific
 Plugin 'Glench/Vim-Jinja2-Syntax'

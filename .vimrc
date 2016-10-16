@@ -115,6 +115,7 @@ let g:syntastic_shell                  = "/bin/sh"
 " NERDTree
 "
 map <leader><leader>n :NERDTreeToggle<CR>
+map <leader><leader>nf :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 30
 autocmd FileType nerdtree setlocal nolist
 " Close if only NERDTree is open

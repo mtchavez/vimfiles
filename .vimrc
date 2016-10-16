@@ -27,10 +27,13 @@ set guifont=FuraMonoForPowerlineNerdFontCompleteMono---Medium:h13
 
 if has('gui_running')
   set guifont=FuraMonoForPowerlineNerdFontCompleteMono---Medium:h13
-  " set transparency=5        " set transparent window
-  " set guioptions=egmrt  " hide the gui menubar
 else
+  set t_Co=256
+  syntax enable
+  let g:solarized_termtrans = 1
+  let g:solarized_termcolors=256
   set background=dark
+  colorscheme solarized
 endif
 
 " vim-devicons
@@ -229,7 +232,11 @@ map <Leader><Leader>rs :call RunNearestSpec()<CR>
 map <Leader><Leader>rl :call RunLastSpec()<CR>
 map <Leader><Leader>ra :call RunAllSpecs()<CR>
 let g:rspec_runner = "os_x_iterm2"
-let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+if has('gui_running')
+  let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+else
+  let g:rspec_command = "!if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+endif
 
 " Javascript
 let g:jsx_ext_required = 0

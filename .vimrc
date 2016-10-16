@@ -222,6 +222,14 @@ let g:go_fmt_command = "goimports"
 " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
+" RSpec.vim mappings
+map <Leader><Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader><Leader>rs :call RunNearestSpec()<CR>
+map <Leader><Leader>rl :call RunLastSpec()<CR>
+map <Leader><Leader>ra :call RunAllSpecs()<CR>
+let g:rspec_runner = "os_x_iterm2"
+let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+
 " Javascript
 let g:jsx_ext_required = 0
 

@@ -233,9 +233,9 @@ map <Leader><Leader>rl :call RunLastSpec()<CR>
 map <Leader><Leader>ra :call RunAllSpecs()<CR>
 let g:rspec_runner = "os_x_iterm2"
 if has('gui_running')
-  let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+  let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi"
 else
-  let g:rspec_command = "!if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rpsec {spec}; fi; fi"
+  let g:rspec_command = "!if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi"
 endif
 
 " Javascript

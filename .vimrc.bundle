@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'easymotion/vim-easymotion'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown' " goes after tabular
@@ -47,6 +47,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim'
 Plugin 'cespare/vim-toml'
+Plugin 'jez/vim-github-hub'
 
 " Snippets
 Plugin 'justinj/vim-react-snippets'

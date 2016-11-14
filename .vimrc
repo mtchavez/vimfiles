@@ -1,14 +1,75 @@
 "
-" Load Vim Bundles in ~/.vimrc.bundle
+" Install functions
 "
-filetype off
-filetype plugin indent off
-if filereadable(expand('~/.vimrc.bundle'))
-  source $HOME/.vimrc.bundle
-endif
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status != 'unchanged' || a:info.force
+    !./install.py --clang-completer --gocode-completer --racer-completer --tern-completer
+  endif
+endfunction
 
-" Re-source vimrc
-autocmd BufWritePost ~/.vimrc source %
+"
+" Install Plugins
+"
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+
+Plug 'easymotion/vim-easymotion'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'jonathanfilip/vim-lucius'
+Plug 'tomasr/molokai'
+Plug 'aclindsa/detectindent'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown' " goes after tabular
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Chiel92/vim-autoformat'
+Plug 'terryma/vim-multiple-cursors'
+
+" Language Specific
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'hdima/python-syntax'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rbenv'
+Plug 'thoughtbot/vim-rspec'
+Plug 'kchmck/vim-coffee-script'
+Plug 'JuliaLang/julia-vim'
+Plug 'fatih/vim-go'
+Plug 'fatih/vim-hclfmt'
+Plug 'tomtom/tcomment_vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'slim-template/vim-slim'
+Plug 'cespare/vim-toml'
+Plug 'jez/vim-github-hub'
+
+" Snippets
+Plug 'justinj/vim-react-snippets'
+
+" vim-scripts repos
+Plug 'L9'
+Plug 'FuzzyFinder'
+
+call plug#end()
 
 "
 " UI / Interface
@@ -33,7 +94,7 @@ else
   let g:solarized_termtrans = 1
   let g:solarized_termcolors=256
   set background=dark
-  colorscheme lucius
+  silent! colorscheme lucius
 endif
 
 " vim-devicons

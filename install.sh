@@ -1,21 +1,4 @@
 #!/bin/sh
-#
-# install vundle
-echo "----> Installing vundle..."
-echo
-if [ ! -d "$HOME/.vim/bundle" ]; then
-    mkdir -p $HOME/.vim/bundle
-fi
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-    git clone http://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-else
-    pushd $HOME/.vim/bundle/Vundle.vim
-    git pull
-    popd
-fi
-echo
-echo "----> Done installing vundle."
-echo
 
 echo "----> Rsync vimfiles over"
 echo
@@ -35,7 +18,8 @@ do
 done
 
 if [ -n "$UPDATE" ]; then
-    mvim -c PluginInstall! -c PluginClean! -c q -c q +qall
+    mvim -c PlugInstall -c PlugClean! -c q -c q +qall
+    mvim -c GoInstallBinaries -c q +qall
 else
     echo
     echo "----> Skipping plugin update; pass -u if you want to update plugins"

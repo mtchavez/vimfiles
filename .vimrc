@@ -412,18 +412,14 @@ nnoremap <leader>pw :call ToggleWhitespaceSave()<cr>
 nnoremap <esc> :noh<return><esc>
 
 " Disabling the directional keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-vmap <up> <nop>
-vmap <down> <nop>
-vmap <left> <nop>
-vmap <right> <nop>
+noremap  <up> ""
+noremap! <up> <Esc>
+noremap  <down> ""
+noremap! <down> <Esc>
+noremap  <left> ""
+noremap! <left> <Esc>
+noremap  <right> ""
+noremap! <right> <Esc>
 
 syntax on
 filetype on

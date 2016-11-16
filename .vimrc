@@ -421,6 +421,9 @@ noremap! <left> <Esc>
 noremap  <right> ""
 noremap! <right> <Esc>
 
+noremap <c-i> <Esc>
+noremap! <c-i> <Esc>
+
 syntax on
 filetype on
 filetype plugin on

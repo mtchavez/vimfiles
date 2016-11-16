@@ -411,6 +411,15 @@ nnoremap <leader>pw :call ToggleWhitespaceSave()<cr>
 " Clear search highlighting on esc
 nnoremap <esc> :noh<return><esc>
 
+" Disabling the directional keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 syntax on
 filetype on

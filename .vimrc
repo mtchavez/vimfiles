@@ -428,6 +428,28 @@ noremap! <right> <Esc>
 noremap <c-i> <Esc>
 noremap! <c-i> <Esc>
 
+"
+" Buffers
+"
+
+" multiple buffers
+set hidden
+
+" New tab
+nmap <leader>T :enew<cr>
+
+" Navigate buffers
+noremap <silent> <C-h> :bprev<CR>
+noremap <silent> <C-l> :bnext<CR>
+
+" Closes the current buffer
+nnoremap <silent> <Leader>bq :Bclose<CR>
+
+" close buffer
+nmap <leader>bd :bd<CR>
+" close all buffers
+nmap <leader>D :bufdo bd<CR>
+
 syntax on
 filetype on
 filetype plugin on

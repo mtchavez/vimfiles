@@ -150,8 +150,15 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "
 " CtrlP
 "
-let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|\/vendor)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|\/vendor)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
 let g:ctrlp_show_hidden = 1
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
 
 "
 " Searching
@@ -416,17 +423,17 @@ nnoremap <leader>pw :call ToggleWhitespaceSave()<cr>
 nnoremap <esc> :noh<return><esc>
 
 " Disabling the directional keys
-noremap  <up> ""
-noremap! <up> <Esc>
-noremap  <down> ""
-noremap! <down> <Esc>
-noremap  <left> ""
-noremap! <left> <Esc>
-noremap  <right> ""
-noremap! <right> <Esc>
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
-noremap <c-i> <Esc>
-noremap! <c-i> <Esc>
+map <c-i> <Esc>
+imap <c-i> <Esc>
 
 "
 " Buffers

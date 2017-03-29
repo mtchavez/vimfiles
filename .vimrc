@@ -186,6 +186,8 @@ let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
 let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']
 let g:syntastic_sass_checkers          = ['sass']
 let g:syntastic_shell                  = "/bin/sh"
+let g:syntastic_elixir_checkers        = ['elixir']
+let g:syntastic_enable_elixir_checker  = 1
 
 "
 " NERDTree

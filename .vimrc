@@ -62,6 +62,7 @@ Plug 'slim-template/vim-slim'
 Plug 'cespare/vim-toml'
 Plug 'jez/vim-github-hub'
 Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

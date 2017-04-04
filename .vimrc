@@ -43,6 +43,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Chiel92/vim-autoformat'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'spf13/vim-autoclose'
 
 " Language Specific
 Plug 'Glench/Vim-Jinja2-Syntax'

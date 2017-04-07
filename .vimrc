@@ -586,6 +586,9 @@ noremap <leader><leader>f :Autoformat<CR><CR>
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 
+" Elixir
+let g:alchemist#elixir_erlang_src = "/usr/local/opt/elixir"
+
 "
 " Functions
 "

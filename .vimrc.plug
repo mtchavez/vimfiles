@@ -73,6 +73,7 @@ Plug 'jez/vim-github-hub'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mattreduce/vim-mix'
 Plug 'slashmili/alchemist.vim'
+Plug 'elmcast/elm-vim'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

@@ -394,6 +394,10 @@ let g:syntastic_shell                  = "/bin/sh"
 let g:syntastic_elixir_checkers        = ['elixir']
 let g:syntastic_enable_elixir_checker  = 1
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:elm_syntastic_show_warnings = 1
+
 "
 " NERDTree
 "
@@ -457,6 +461,10 @@ if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" YCM
+let g:ycm_semantic_triggers = { 'elm' : ['.'] }
+
 " Neosnippet
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
@@ -574,6 +582,9 @@ endif
 
 " Javascript
 let g:jsx_ext_required = 0
+
+" Elm
+let g:elm_format_autosave = 1
 
 "
 " HCL

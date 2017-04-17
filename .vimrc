@@ -449,6 +449,10 @@ endif
 " Completion / Snippets
 "
 "
+"" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+  \ 'default' : ''
+  \ }
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#sources#buffer#cache_limit_size = 50000
@@ -456,6 +460,12 @@ let g:neocomplete#data_directory = $HOME.'/.vim/cache/noecompl'
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 2
 let g:neocomplete#enable_auto_select = 1
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.elm = '\.'
+
 
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}

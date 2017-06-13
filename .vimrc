@@ -301,6 +301,14 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 "
+" vim-easytags
+"
+let g:easytags_by_filetype = '~/.vimtags'
+let g:easytags_autorecurse = 1
+let g:easytags_async = 1
+nmap <leader>ut :UpdateTags!<cr>
+
+"
 " CtrlP
 "
 let g:ctrlp_custom_ignore = {

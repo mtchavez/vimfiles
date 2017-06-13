@@ -7,6 +7,8 @@ rsync --exclude ".git" --exclude ".gitignore" --exclude ".vim/bundle" --exclude 
 
 # Ensure bundle dir
 mkdir -p $HOME/.vim/bundle
+# Ensure vimtags dir
+mkdir -p $HOME/.vimtags
 
 while getopts "u" option
 do

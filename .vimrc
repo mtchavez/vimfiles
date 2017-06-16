@@ -317,8 +317,8 @@ nmap <leader>ut :UpdateTags!<cr>
 " CtrlP
 "
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|\/vendor)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|vendor|node_modules|tmp)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|log)$',
 \}
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'

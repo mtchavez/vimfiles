@@ -390,26 +390,36 @@ endif
 "
 " Syntastic
 "
-let g:syntastic_mode_map = {
-\ 'mode': 'active',
-\ 'active_filetypes': [],
-\ 'passive_filetypes': []
-\ }
-let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-double_quoted_strings-check --no-variable_scope-check --no-class_parameter_defaults'
-let g:syntastic_python_checkers        = ['pyflakes', 'pep8']
-let g:syntastic_python_pep8_args       = '--ignore=E221,E501,E502,W391 --max-line-length=1000'
-let g:syntastic_javascript_checkers    = ['eslint']
-let g:syntastic_coffee_checkers        = ['coffeelint', 'coffee']
-let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
-let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']
-let g:syntastic_sass_checkers          = ['sass']
-let g:syntastic_shell                  = "/bin/sh"
-let g:syntastic_elixir_checkers        = ['elixir']
-let g:syntastic_enable_elixir_checker  = 1
+" let g:syntastic_mode_map = {
+" \ 'mode': 'active',
+" \ 'active_filetypes': [],
+" \ 'passive_filetypes': []
+" \ }
+" let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-double_quoted_strings-check --no-variable_scope-check --no-class_parameter_defaults'
+" let g:syntastic_python_checkers        = ['pyflakes', 'pep8']
+" let g:syntastic_python_pep8_args       = '--ignore=E221,E501,E502,W391 --max-line-length=1000'
+" let g:syntastic_javascript_checkers    = ['eslint']
+" let g:syntastic_coffee_checkers        = ['coffeelint', 'coffee']
+" let g:syntastic_haml_checkers          = ['haml_lint', 'haml']
+" let g:syntastic_ruby_checkers          = ['mri', 'rubocop', 'reek']
+" let g:syntastic_sass_checkers          = ['sass']
+" let g:syntastic_shell                  = "/bin/sh"
+" let g:syntastic_elixir_checkers        = ['elixir']
+" let g:syntastic_enable_elixir_checker  = 1
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:elm_syntastic_show_warnings = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
+"
+" Ale
+"
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+" Cycle through errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "
 " NERDTree

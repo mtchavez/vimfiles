@@ -371,6 +371,17 @@ if isdirectory(expand("~/.vim/plugged/tagbar/"))
   nnoremap <silent> <leader>tt :TagbarToggle<CR>
 endif
 
+let g:tagbar_type_coffee = {
+    \ 'ctagstype' : 'coffee',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'f:fields',
+    \ ]
+\ }
+
 " Fugitive
 if isdirectory(expand("~/.vim/plugged/vim-fugitive/"))
   nnoremap <silent> <leader>gs :Gstatus<CR>

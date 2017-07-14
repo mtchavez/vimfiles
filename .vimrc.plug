@@ -77,6 +77,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'mattreduce/vim-mix'
 Plug 'slashmili/alchemist.vim'
 Plug 'elmcast/elm-vim'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

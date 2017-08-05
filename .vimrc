@@ -273,23 +273,6 @@ nmap <leader>D :bufdo bd<CR>
 " Plugins
 "
 
-" vim-devicons
-if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
-endif
-
-let g:webdevicons_enable                    = 1
-let g:webdevicons_enable_ctrlp              = 1
-let g:webdevicons_enable_nerdtree           = 1
-let g:webdevicons_enable_airline_tabline    = 1
-let g:webdevicons_enable_airline_statusline = 1
-
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:webdevicons_enable_nerdtree = 1
-
 "
 " vim-airline
 "
@@ -357,7 +340,7 @@ let g:ctrlp_user_command = {
 if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
   " CtrlP extensions
   let g:ctrlp_extensions = ['funky']
-  let g:ctrlp_funky_syntax_highlight = 1
+  let g:ctrlp_funky_syntax_highlight = 0
   let g:ctrlp_funky_matchtype = 'path'
 
   "funky
@@ -443,12 +426,18 @@ autocmd FileType nerdtree setlocal nolist
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  if a:fg != ""
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' guifg=#'. a:guifg
+  endif
+  if a:bg != "none"
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' guibg=#'. a:guibg
+  endif
+  " exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg=#'. a:guibg .' guifg=#'. a:guifg
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$', '\.log$']
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
@@ -457,19 +446,102 @@ let NERDTreeKeepTreeInNewTab=1
 let g:NERDShutUp=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+let s:brown = '905532'
+let s:aqua =  '3AFFDB'
+let s:blue = '689FB6'
+let s:darkBlue = '44788E'
+let s:purple = '834F79'
+let s:lightPurple = '834F79'
+let s:red = 'AE403F'
+let s:beige = 'F5C06F'
+let s:yellow = 'F09F17'
+let s:orange = 'D4843E'
+let s:darkOrange = 'F16529'
+let s:pink = 'CB6F6F'
+let s:salmon = 'EE6E73'
+let s:green = '8FAA54'
+let s:lightGreen = '31B53E'
+let s:white = 'FFFFFF'
+
+call NERDTreeHighlightFile('ai', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('bat', 'White', 'none', s:white, '151515')
+call NERDTreeHighlightFile('bmp', 'Cyan', 'none', s:aqua, '151515')
+" call NERDTreeHighlightFile('c', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('coffee', 'Brown', 'none', s:brown, '151515')
+call NERDTreeHighlightFile('conf', 'White', 'none', s:white, '151515')
+call NERDTreeHighlightFile('cp', 'Blue', 'none', s:blue, '151515')
+" call NERDTreeHighlightFile('cpp', 'Blue', 'none', s:blue, '151515')
+" call NERDTreeHighlightFile('css', 'Blue', 'none', s:blue, '151515')
+" call NERDTreeHighlightFile('cxx', 'Blue', 'none', s:blue, '151515')
+" call NERDTreeHighlightFile('d', 'Red', 'none', s:red, '151515')
+" call NERDTreeHighlightFile('dart', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('db', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('diff', 'White', 'none', s:white, '151515')
+call NERDTreeHighlightFile('dump', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('edn', 'Green', 'none', s:green, '151515')
+call NERDTreeHighlightFile('ejs', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('erb', 'Red', 'none', s:red, '151515')
+call NERDTreeHighlightFile('erl', 'Magenta', 'none', s:lightPurple, '151515')
+call NERDTreeHighlightFile('fish', 'Green', 'none', s:green, '151515')
+call NERDTreeHighlightFile('fs', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('fsi', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('fsscript', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('fsx', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('gif', 'Cyan', 'none', s:aqua, '151515')
+call NERDTreeHighlightFile('go', 'LightYellow', 'none', s:beige, '151515')
+call NERDTreeHighlightFile('hbs', 'LightRed', 'none', s:orange, '151515')
+call NERDTreeHighlightFile('hrl', 'LightMagenta', 'none', s:pink, '151515')
+call NERDTreeHighlightFile('hs', 'LightYellow', 'none', s:beige, '151515')
+call NERDTreeHighlightFile('htm', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('html', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('ico', 'Cyan', 'none', s:aqua, '151515')
+call NERDTreeHighlightFile('ini', 'White', 'none', s:white, '151515')
+call NERDTreeHighlightFile('java', 'DarkMagenta', 'none', s:purple, '151515')
+call NERDTreeHighlightFile('jpeg', 'Cyan', 'none', s:aqua, '151515')
+call NERDTreeHighlightFile('jpg', 'Cyan', 'none', s:aqua, '151515')
+call NERDTreeHighlightFile('js', 'LightYellow', 'none', s:beige, '151515')
+call NERDTreeHighlightFile('json', 'LightYellow', 'none', s:beige, '151515')
+call NERDTreeHighlightFile('jsx', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('less', 'DarkBlue', 'none', s:darkBlue, '151515')
+call NERDTreeHighlightFile('lhs', 'LightYellow', 'none', s:beige, '151515')
+call NERDTreeHighlightFile('lua', 'DarkMagenta', 'none', s:purple, '151515')
+call NERDTreeHighlightFile('markdown', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('md', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('ml', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('mli', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('mustache', 'LightRed', 'none', s:orange, '151515')
+call NERDTreeHighlightFile('php', 'DarkMagenta', 'none', s:purple, '151515')
+call NERDTreeHighlightFile('pl', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('pm', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('png', 'Cyan', 'none', s:aqua, '151515')
+call NERDTreeHighlightFile('psb', 'DarkBlue', 'none', s:darkBlue, '151515')
+call NERDTreeHighlightFile('psd', 'DarkBlue', 'none', s:darkBlue, '151515')
+call NERDTreeHighlightFile('py', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('pyc', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('pyd', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('pyo', 'Yellow', 'none', s:yellow, '151515')
+call NERDTreeHighlightFile('rb', 'Red', 'none', s:red, '151515')
+call NERDTreeHighlightFile('rlib', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('rs', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('rss', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('scala', 'Red', 'none', s:red, '151515')
+call NERDTreeHighlightFile('scss', 'LightMagenta', 'none', s:pink, '151515')
+call NERDTreeHighlightFile('sh', 'Magenta', 'none', s:lightPurple, '151515')
+call NERDTreeHighlightFile('slim', 'LightRed', 'none', s:orange, '151515')
+call NERDTreeHighlightFile('sln', 'DarkMagenta', 'none', s:purple, '151515')
+call NERDTreeHighlightFile('sql', 'DarkBlue', 'none', s:darkBlue, '151515')
+call NERDTreeHighlightFile('styl', 'Green', 'none', s:green, '151515')
+call NERDTreeHighlightFile('suo', 'DarkMagenta', 'none', s:purple, '151515')
+call NERDTreeHighlightFile('t', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('ts', 'Blue', 'none', s:blue, '151515')
+call NERDTreeHighlightFile('twig', 'Green', 'none', s:green, '151515')
+call NERDTreeHighlightFile('vim', 'Green', 'none', s:green, '151515')
+call NERDTreeHighlightFile('xul', 'DarkRed', 'none', s:darkOrange, '151515')
+call NERDTreeHighlightFile('yml', 'White', 'none', s:white, '151515')
+
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
 
 " Session List
 set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
@@ -478,6 +550,25 @@ if isdirectory(expand("~/.vim/plugged/sessionman.vim/"))
   nmap <leader>ss :SessionSave<CR>
   nmap <leader>sc :SessionClose<CR>
 endif
+
+" vim-devicons
+" Load after nerdtree
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+let g:webdevicons_enable                    = 1
+let g:webdevicons_enable_ctrlp              = 1
+let g:webdevicons_enable_nerdtree           = 1
+let g:webdevicons_enable_airline_tabline    = 1
+let g:webdevicons_enable_airline_statusline = 1
+
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_nerdtree = 1
+
 
 "
 " Completion / Snippets

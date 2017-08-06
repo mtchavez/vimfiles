@@ -9,20 +9,20 @@
 
 " Identify platform
 silent function! OSX()
-  return has('macunix')
+return has('macunix')
 endfunction
 silent function! LINUX()
-  return has('unix') && !has('macunix') && !has('win32unix')
+return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
 silent function! WINDOWS()
-  return  (has('win32') || has('win64'))
+return  (has('win32') || has('win64'))
 endfunction
 
 " Basics
 " Must be first line
 set nocompatible
 if !WINDOWS()
-    set shell=/bin/sh
+  set shell=/bin/sh
 endif
 
 " Windows Compatible
@@ -35,7 +35,7 @@ endif
 " Arrow Key Fix
 " https://github.com/spf13/spf13-vim/issues/780
 if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
-    inoremap <silent> <C-[>OC <RIGHT>
+  inoremap <silent> <C-[>OC <RIGHT>
 endif
 
 "
@@ -113,6 +113,45 @@ elseif filereadable(expand("~/.vim/plugged/vim-colors-solarized/colors/solarized
   colorscheme solarized
 endif
 
+let g:sol = {
+\  'gui': {
+\   'base03': '#002b36',
+\   'base02': '#073642',
+\   'base01': '#586e75',
+\   'base00': '#657b83',
+\   'base0': '#839496',
+\   'base1': '#93a1a1',
+\   'base2': '#eee8d5',
+\   'base3': '#fdf6e3',
+\   'yellow': '#b58900',
+\   'orange': '#cb4b16',
+\   'red': '#dc322f',
+\   'magenta': '#d33682',
+\   'violet': '#6c71c4',
+\   'blue': '#268bd2',
+\   'cyan': '#2aa198',
+\   'green': '#719e07'
+\  },
+\  'cterm': {
+\   'base03': 8,
+\   'base02': 0,
+\   'base01': 10,
+\   'base00': 11,
+\   'base0': 12,
+\   'base1': 14,
+\   'base2': 7,
+\   'base3': 15,
+\   'yellow': 3,
+\   'orange': 9,
+\   'red': 1,
+\   'magenta': 5,
+\   'violet': 13,
+\   'blue': 4,
+\   'cyan': 6,
+\   'green': 2
+\  }
+\}
+
 set tabpagemax=15               " Only show 15 tabs
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
@@ -125,7 +164,7 @@ if has('cmdline_info')
   set ruler                   " Show the ruler
   set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
   set showcmd                 " Show partial commands in status line and
-                              " Selected characters/lines in visual mode
+  " Selected characters/lines in visual mode
 endif
 
 if has('statusline')
@@ -300,9 +339,9 @@ nmap <leader>ut :UpdateTags!<cr>
 " CtrlP
 "
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|vendor|node_modules|tmp)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|log)$',
-\}
+      \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.DS_STORE|vendor|node_modules|tmp)$',
+      \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|log)$',
+      \}
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 " Easy bindings for its various modes
@@ -318,7 +357,7 @@ elseif executable('ack-grep')
   let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
 elseif executable('ack')
   let s:ctrlp_fallback = 'ack %s --nocolor -f'
-" On Windows use "dir" as fallback command.
+  " On Windows use "dir" as fallback command.
 elseif WINDOWS()
   let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
 else
@@ -330,12 +369,12 @@ if exists("g:ctrlp_user_command")
 endif
 
 let g:ctrlp_user_command = {
-\ 'types': {
-\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-\ },
-\ 'fallback': s:ctrlp_fallback
-\ }
+      \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': s:ctrlp_fallback
+      \ }
 
 if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
   " CtrlP extensions
@@ -355,15 +394,15 @@ if isdirectory(expand("~/.vim/plugged/tagbar/"))
 endif
 
 let g:tagbar_type_coffee = {
-    \ 'ctagstype' : 'coffee',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'm:methods',
-        \ 'f:functions',
-        \ 'v:variables',
-        \ 'f:fields',
-    \ ]
-\ }
+      \ 'ctagstype' : 'coffee',
+      \ 'kinds'     : [
+      \ 'c:classes',
+      \ 'm:methods',
+      \ 'f:functions',
+      \ 'v:variables',
+      \ 'f:fields',
+      \ ]
+      \ }
 
 " Fugitive
 if isdirectory(expand("~/.vim/plugged/vim-fugitive/"))
@@ -446,99 +485,6 @@ let NERDTreeKeepTreeInNewTab=1
 let g:NERDShutUp=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-let s:brown = '905532'
-let s:aqua =  '3AFFDB'
-let s:blue = '689FB6'
-let s:darkBlue = '44788E'
-let s:purple = '834F79'
-let s:lightPurple = '834F79'
-let s:red = 'AE403F'
-let s:beige = 'F5C06F'
-let s:yellow = 'F09F17'
-let s:orange = 'D4843E'
-let s:darkOrange = 'F16529'
-let s:pink = 'CB6F6F'
-let s:salmon = 'EE6E73'
-let s:green = '8FAA54'
-let s:lightGreen = '31B53E'
-let s:white = 'FFFFFF'
-
-call NERDTreeHighlightFile('ai', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('bat', 'White', 'none', s:white, '151515')
-call NERDTreeHighlightFile('bmp', 'Cyan', 'none', s:aqua, '151515')
-" call NERDTreeHighlightFile('c', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('coffee', 'Brown', 'none', s:brown, '151515')
-call NERDTreeHighlightFile('conf', 'White', 'none', s:white, '151515')
-call NERDTreeHighlightFile('cp', 'Blue', 'none', s:blue, '151515')
-" call NERDTreeHighlightFile('cpp', 'Blue', 'none', s:blue, '151515')
-" call NERDTreeHighlightFile('css', 'Blue', 'none', s:blue, '151515')
-" call NERDTreeHighlightFile('cxx', 'Blue', 'none', s:blue, '151515')
-" call NERDTreeHighlightFile('d', 'Red', 'none', s:red, '151515')
-" call NERDTreeHighlightFile('dart', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('db', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('diff', 'White', 'none', s:white, '151515')
-call NERDTreeHighlightFile('dump', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('edn', 'Green', 'none', s:green, '151515')
-call NERDTreeHighlightFile('ejs', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('erb', 'Red', 'none', s:red, '151515')
-call NERDTreeHighlightFile('erl', 'Magenta', 'none', s:lightPurple, '151515')
-call NERDTreeHighlightFile('fish', 'Green', 'none', s:green, '151515')
-call NERDTreeHighlightFile('fs', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('fsi', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('fsscript', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('fsx', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('gif', 'Cyan', 'none', s:aqua, '151515')
-call NERDTreeHighlightFile('go', 'LightYellow', 'none', s:beige, '151515')
-call NERDTreeHighlightFile('hbs', 'LightRed', 'none', s:orange, '151515')
-call NERDTreeHighlightFile('hrl', 'LightMagenta', 'none', s:pink, '151515')
-call NERDTreeHighlightFile('hs', 'LightYellow', 'none', s:beige, '151515')
-call NERDTreeHighlightFile('htm', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('html', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('ico', 'Cyan', 'none', s:aqua, '151515')
-call NERDTreeHighlightFile('ini', 'White', 'none', s:white, '151515')
-call NERDTreeHighlightFile('java', 'DarkMagenta', 'none', s:purple, '151515')
-call NERDTreeHighlightFile('jpeg', 'Cyan', 'none', s:aqua, '151515')
-call NERDTreeHighlightFile('jpg', 'Cyan', 'none', s:aqua, '151515')
-call NERDTreeHighlightFile('js', 'LightYellow', 'none', s:beige, '151515')
-call NERDTreeHighlightFile('json', 'LightYellow', 'none', s:beige, '151515')
-call NERDTreeHighlightFile('jsx', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('less', 'DarkBlue', 'none', s:darkBlue, '151515')
-call NERDTreeHighlightFile('lhs', 'LightYellow', 'none', s:beige, '151515')
-call NERDTreeHighlightFile('lua', 'DarkMagenta', 'none', s:purple, '151515')
-call NERDTreeHighlightFile('markdown', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('md', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('ml', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('mli', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('mustache', 'LightRed', 'none', s:orange, '151515')
-call NERDTreeHighlightFile('php', 'DarkMagenta', 'none', s:purple, '151515')
-call NERDTreeHighlightFile('pl', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('pm', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('png', 'Cyan', 'none', s:aqua, '151515')
-call NERDTreeHighlightFile('psb', 'DarkBlue', 'none', s:darkBlue, '151515')
-call NERDTreeHighlightFile('psd', 'DarkBlue', 'none', s:darkBlue, '151515')
-call NERDTreeHighlightFile('py', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('pyc', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('pyd', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('pyo', 'Yellow', 'none', s:yellow, '151515')
-call NERDTreeHighlightFile('rb', 'Red', 'none', s:red, '151515')
-call NERDTreeHighlightFile('rlib', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('rs', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('rss', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('scala', 'Red', 'none', s:red, '151515')
-call NERDTreeHighlightFile('scss', 'LightMagenta', 'none', s:pink, '151515')
-call NERDTreeHighlightFile('sh', 'Magenta', 'none', s:lightPurple, '151515')
-call NERDTreeHighlightFile('slim', 'LightRed', 'none', s:orange, '151515')
-call NERDTreeHighlightFile('sln', 'DarkMagenta', 'none', s:purple, '151515')
-call NERDTreeHighlightFile('sql', 'DarkBlue', 'none', s:darkBlue, '151515')
-call NERDTreeHighlightFile('styl', 'Green', 'none', s:green, '151515')
-call NERDTreeHighlightFile('suo', 'DarkMagenta', 'none', s:purple, '151515')
-call NERDTreeHighlightFile('t', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('ts', 'Blue', 'none', s:blue, '151515')
-call NERDTreeHighlightFile('twig', 'Green', 'none', s:green, '151515')
-call NERDTreeHighlightFile('vim', 'Green', 'none', s:green, '151515')
-call NERDTreeHighlightFile('xul', 'DarkRed', 'none', s:darkOrange, '151515')
-call NERDTreeHighlightFile('yml', 'White', 'none', s:white, '151515')
-
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
 let g:NERDTreeDisablePatternMatchHighlight = 1
@@ -569,6 +515,56 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable_nerdtree = 1
 
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+
+augroup devicons
+  autocmd!
+  autocmd FileType nerdtree setlocal nolist
+  autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+  autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
+  autocmd FileType nerdtree setlocal conceallevel=3
+  autocmd FileType nerdtree setlocal concealcursor=nvic
+augroup END
+
+function! DeviconsColors(config)
+  let colors = keys(a:config)
+  augroup devicons_colors
+    autocmd!
+    for color in colors
+      if color == 'normal'
+        exec 'autocmd FileType nerdtree if &background == ''dark'' | '.
+              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
+              \ 'else | '.
+              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
+              \ 'endif'
+      elseif color == 'emphasize'
+        exec 'autocmd FileType nerdtree if &background == ''dark'' | '.
+              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
+              \ 'else | '.
+              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
+              \ 'endif'
+      else
+        exec 'autocmd FileType nerdtree highlight devicons_'.color.' guifg='.g:sol.gui[color].' ctermfg='.g:sol.cterm[color]
+      endif
+      exec 'autocmd FileType nerdtree syntax match devicons_'.color.' /\v'.join(a:config[color], '|').'/ containedin=ALL'
+    endfor
+  augroup END
+endfunction
+let g:devicons_colors = {
+      \'normal': ['', '', '', '', ''],
+      \'emphasize': ['', '', '', '', '', '', '', '', '', '', ''],
+      \'yellow': ['', '', ''],
+      \'orange': ['', '', '', 'λ', '', ''],
+      \'red': ['', '', '', '', '', '', '', '', ''],
+      \'magenta': [''],
+      \'violet': ['', '', '', ''],
+      \'blue': ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      \'cyan': ['', '', '', ''],
+      \'green': ['', '', '', '']
+      \}
+call DeviconsColors(g:devicons_colors)
+
 
 "
 " Completion / Snippets
@@ -576,8 +572,8 @@ let g:webdevicons_enable_nerdtree = 1
 "
 "" Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-  \ 'default' : ''
-  \ }
+      \ 'default' : ''
+      \ }
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#sources#buffer#cache_limit_size = 50000
@@ -602,11 +598,11 @@ let g:ycm_semantic_triggers = { 'elm' : ['.'] }
 
 " Neosnippet
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
 "
 " Tabulararize
@@ -777,7 +773,7 @@ function! ToggleWhitespaceSave()
   else
     let b:pw = 1
     echo 'Preserving whitespace on save'
-endif
+  endif
 endfunction
 
 nnoremap <leader>pw :call ToggleWhitespaceSave()<cr>
@@ -787,12 +783,12 @@ function! InitializeDirectories()
   let parent = $HOME
   let prefix = 'vim'
   let dir_list = {
-    \ 'backup': 'backupdir',
-    \ 'views': 'viewdir',
-    \ 'swap': 'directory' }
+        \ 'backup': 'backupdir',
+        \ 'views': 'viewdir',
+        \ 'swap': 'directory' }
 
   if has('persistent_undo')
-  let dir_list['undo'] = 'undodir'
+    let dir_list['undo'] = 'undodir'
   endif
 
   " To specify a different directory in which to place the vimbackup,

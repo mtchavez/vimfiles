@@ -3,7 +3,7 @@
 # Install/Update YCM
 #
 
-YCM_DIR=$HOME/.vim/bundle/YouCompleteMe
+YCM_DIR=$HOME/.vim/plugged/YouCompleteMe
 YCM_OPTS="--clang-completer --gocode-completer --racer-completer --tern-completer"
 
 if [ ! -d $YCM_DIR ]

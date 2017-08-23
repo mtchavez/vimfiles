@@ -453,6 +453,13 @@ let g:airline#extensions#ale#enabled = 1
 " Cycle through errors
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+map <leader>af :ALEFix<CR>
+
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\}
+
 
 "
 " NERDTree

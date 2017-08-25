@@ -379,7 +379,7 @@ let g:ctrlp_user_command = {
 if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
   " CtrlP extensions
   let g:ctrlp_extensions = ['funky']
-  let g:ctrlp_funky_syntax_highlight = 0
+  let g:ctrlp_funky_syntax_highlight = 1
   let g:ctrlp_funky_matchtype = 'path'
 
   "funky
@@ -459,7 +459,6 @@ map <leader>af :ALEFix<CR>
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \}
-
 
 "
 " NERDTree

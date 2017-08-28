@@ -9,13 +9,13 @@
 
 " Identify platform
 silent function! OSX()
-return has('macunix')
+  return has('macunix')
 endfunction
 silent function! LINUX()
-return has('unix') && !has('macunix') && !has('win32unix')
+  return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
 silent function! WINDOWS()
-return  (has('win32') || has('win64'))
+  return  (has('win32') || has('win64'))
 endfunction
 
 " Basics
@@ -34,7 +34,7 @@ endif
 
 " Arrow Key Fix
 " https://github.com/spf13/spf13-vim/issues/780
-if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+if &term[:4] ==# 'xterm' || &term[:5] ==# 'screen' || &term[:3] ==# 'rxvt'
   inoremap <silent> <C-[>OC <RIGHT>
 endif
 
@@ -43,7 +43,7 @@ endif
 "
 
 " Load in bundles
-if filereadable(expand("~/.vimrc.plug"))
+if filereadable(expand('~/.vimrc.plug'))
   source ~/.vimrc.plug
 endif
 
@@ -87,7 +87,9 @@ set iskeyword-=-                    " '-' is an end of word designator
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+augroup commitmsg
+  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+augroup END
 
 " Setting up the directories
 set backup                    " Backups are nice ...
@@ -100,15 +102,15 @@ endif
 "
 " Vim UI
 "
-if !has('gui_running') && filereadable(expand("~/.vim/plugged/vim-lucius/colors/lucius.vim"))
+if !has('gui_running') && filereadable(expand('~/.vim/plugged/vim-lucius/colors/lucius.vim'))
   set t_Co=256
   set background=dark
   silent! colorscheme lucius
-elseif filereadable(expand("~/.vim/plugged/vim-colors-solarized/colors/solarized.vim"))
+elseif filereadable(expand('~/.vim/plugged/vim-colors-solarized/colors/solarized.vim'))
   let g:solarized_termcolors=256
   let g:solarized_termtrans=1
-  let g:solarized_contrast="normal"
-  let g:solarized_visibility="normal"
+  let g:solarized_contrast='normal'
+  let g:solarized_visibility='normal'
   color solarized             " Load a colorscheme
   colorscheme solarized
 endif
@@ -228,7 +230,7 @@ noremap j gj
 noremap k gk
 
 " Shift key fixes
-if has("user_commands")
+if has('user_commands')
   command! -bang -nargs=* -complete=file E e<bang> <args>
   command! -bang -nargs=* -complete=file W w<bang> <args>
   command! -bang -nargs=* -complete=file Wq wq<bang> <args>
@@ -364,19 +366,20 @@ else
   let s:ctrlp_fallback = 'find %s -type f'
 endif
 
-if exists("g:ctrlp_user_command")
-  unlet g:ctrlp_user_command
-endif
+let g:ctrlp_user_command = s:ctrlp_fallback
+" if exists('g:ctrlp_user_command')
+"   unlet g:ctrlp_user_command
+" endif
+"
+" let g:ctrlp_user_command = {
+"       \ 'types': {
+"       \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+"       \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+"       \ },
+"       \ 'fallback': s:ctrlp_fallback
+"       \ }
 
-let g:ctrlp_user_command = {
-      \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-      \ },
-      \ 'fallback': s:ctrlp_fallback
-      \ }
-
-if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
+if isdirectory(expand('~/.vim/plugged/ctrlp-funky/'))
   " CtrlP extensions
   let g:ctrlp_extensions = ['funky']
   let g:ctrlp_funky_syntax_highlight = 1
@@ -389,7 +392,7 @@ if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
 endif
 
 " TagBar
-if isdirectory(expand("~/.vim/plugged/tagbar/"))
+if isdirectory(expand('~/.vim/plugged/tagbar/'))
   nnoremap <silent> <leader>tt :TagbarToggle<CR>
 endif
 
@@ -405,7 +408,7 @@ let g:tagbar_type_coffee = {
       \ }
 
 " Fugitive
-if isdirectory(expand("~/.vim/plugged/vim-fugitive/"))
+if isdirectory(expand('~/.vim/plugged/vim-fugitive/'))
   nnoremap <silent> <leader>gs :Gstatus<CR>
   nnoremap <silent> <leader>gd :Gdiff<CR>
   nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -457,8 +460,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 map <leader>af :ALEFix<CR>
 
 let g:ale_fixers = {
-\   'ruby': ['rubocop'],
-\}
+    \ 'ruby': ['rubocop'] }
 
 "
 " NERDTree
@@ -466,28 +468,30 @@ let g:ale_fixers = {
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 30
-autocmd FileType nerdtree setlocal nolist
+augroup ntree
+  autocmd FileType nerdtree setlocal nolist
+augroup END
 " Close if only NERDTree is open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  if a:fg != ""
+  if a:fg !=# ''
     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' guifg=#'. a:guifg
   endif
-  if a:bg != "none"
+  if a:bg !=# 'none'
     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' guibg=#'. a:guibg
   endif
   " exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg=#'. a:guibg .' guifg=#'. a:guifg
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$', '\.log$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$', '\.log$']
+let g:NERDTreeChDirMode=0
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeMouseMode=2
+let g:NERDTreeShowHidden=1
+let g:NERDTreeKeepTreeInNewTab=1
 let g:NERDShutUp=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
@@ -497,7 +501,7 @@ let g:NERDTreeDisablePatternMatchHighlight = 1
 
 " Session List
 set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-if isdirectory(expand("~/.vim/plugged/sessionman.vim/"))
+if isdirectory(expand('~/.vim/plugged/sessionman.vim/'))
   nmap <leader>sl :SessionList<CR>
   nmap <leader>ss :SessionSave<CR>
   nmap <leader>sc :SessionClose<CR>
@@ -534,26 +538,26 @@ augroup devicons
 augroup END
 
 function! DeviconsColors(config)
-  let colors = keys(a:config)
+  let l:colors = keys(a:config)
   augroup devicons_colors
     autocmd!
-    for color in colors
-      if color == 'normal'
+    for l:color in l:colors
+      if l:color ==# 'normal'
         exec 'autocmd FileType nerdtree if &background == ''dark'' | '.
-              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
+              \ 'highlight devicons_'.l:color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
               \ 'else | '.
-              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
+              \ 'highlight devicons_'.l:color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
               \ 'endif'
-      elseif color == 'emphasize'
+      elseif l:color ==# 'emphasize'
         exec 'autocmd FileType nerdtree if &background == ''dark'' | '.
-              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
+              \ 'highlight devicons_'.l:color.' guifg='.g:sol.gui.base1.' ctermfg='.g:sol.cterm.base1.' | '.
               \ 'else | '.
-              \ 'highlight devicons_'.color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
+              \ 'highlight devicons_'.l:color.' guifg='.g:sol.gui.base01.' ctermfg='.g:sol.cterm.base01.' | '.
               \ 'endif'
       else
-        exec 'autocmd FileType nerdtree highlight devicons_'.color.' guifg='.g:sol.gui[color].' ctermfg='.g:sol.cterm[color]
+        exec 'autocmd FileType nerdtree highlight devicons_'.l:color.' guifg='.g:sol.gui[l:color].' ctermfg='.g:sol.cterm[l:color]
       endif
-      exec 'autocmd FileType nerdtree syntax match devicons_'.color.' /\v'.join(a:config[color], '|').'/ containedin=ALL'
+      exec 'autocmd FileType nerdtree syntax match devicons_'.l:color.' /\v'.join(a:config[l:color], '|').'/ containedin=ALL'
     endfor
   augroup END
 endfunction
@@ -603,12 +607,14 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 let g:ycm_semantic_triggers = { 'elm' : ['.'] }
 
 " Neosnippet
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
+if has('neosnippet')
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+endif
 
 "
 " Tabulararize
@@ -640,7 +646,7 @@ vmap <leader>a\| :Tabularize /\|<CR> vmap <leader>a: :Tabularize /:\zs<CR>
 noremap <D-/> :TComment<CR>
 
 " Wildmenu
-if has("wildmenu")
+if has('wildmenu')
   set wildmenu
   set wildmode=list:longest,list:full
   set wildignore+=*.a,*.o,*.so,*.pyo,*.pyc,*.rbc,*.dSYM,*.beam,*.jar,*.class
@@ -655,15 +661,17 @@ endif
 
 " Snippets
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-b>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+let g:UltiSnipsExpandTrigger='<C-k>'
+let g:UltiSnipsJumpForwardTrigger='<C-b>'
+let g:UltiSnipsJumpBackwardTrigger='<C-z>'
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+if has('neosnippet')
+  let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+endif
 
 "
 " Syntax Specific
@@ -688,14 +696,16 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
-au FileType go nmap <leader><leader>gr :GoRun<CR><CR>
-au FileType go nmap <leader><leader>gb :GoBuild<CR><CR>
-au FileType go nmap <leader><leader>gt :GoTest<CR><CR>
-au FileType go nmap <leader><leader>gc :GoCoverage<CR><CR>
-au FileType go nmap <leader><leader>gl :GoLint<CR><CR>
-au Filetype go nnoremap <leader><leader>gd :vsplit <CR>:exe "GoDef" <CR><CR>
+augroup gocmds
+  au FileType go nmap <leader><leader>gr :GoRun<CR><CR>
+  au FileType go nmap <leader><leader>gb :GoBuild<CR><CR>
+  au FileType go nmap <leader><leader>gt :GoTest<CR><CR>
+  au FileType go nmap <leader><leader>gc :GoCoverage<CR><CR>
+  au FileType go nmap <leader><leader>gl :GoLint<CR><CR>
+  au Filetype go nnoremap <leader><leader>gd :vsplit <CR>:exe "GoDef" <CR><CR>
+augroup END
 " Imports turned off by default now
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 "au BufWritePost *.go !gofmt -w %
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
@@ -710,11 +720,11 @@ map <Leader><Leader>rt :call RunCurrentSpecFile()<CR>
 map <Leader><Leader>rs :call RunNearestSpec()<CR>
 map <Leader><Leader>rl :call RunLastSpec()<CR>
 map <Leader><Leader>ra :call RunAllSpecs()<CR>
-let g:rspec_runner = "os_x_iterm2"
+let g:rspec_runner = 'os_x_iterm2'
 if has('gui_running')
-  let g:rspec_command = "if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi"
+  let g:rspec_command = 'if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi'
 else
-  let g:rspec_command = "!if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi"
+  let g:rspec_command = '!if [ -f ./bin/rspec ]; then ./bin/rspec {spec}; else if [ `bundle exec which rspec` ]; then bundle exec rspec {spec}; else rspec {spec}; fi; fi'
 endif
 
 " Javascript
@@ -735,7 +745,7 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 
 " Elixir
-let g:alchemist#elixir_erlang_src = "/usr/local/opt/elixir"
+let g:alchemist#elixir_erlang_src = '/usr/local/opt/elixir'
 
 "
 " Functions
@@ -767,7 +777,7 @@ augroup whitespace
 augroup END
 
 function! SynStack()
-  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' > ')
 endfunc
 
 nnoremap <F7> :call SynStack()<CR>

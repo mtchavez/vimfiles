@@ -78,6 +78,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'elmcast/elm-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'nikvdp/ejs-syntax'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

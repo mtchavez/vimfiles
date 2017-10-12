@@ -52,8 +52,9 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'spf13/vim-autoclose'
 Plug 'vim-scripts/sessionman.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Language Specific
 Plug 'Glench/Vim-Jinja2-Syntax'

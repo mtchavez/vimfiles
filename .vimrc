@@ -327,15 +327,26 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "
 " vim-easytags
 "
-let g:easytags_by_filetype = '~/.vimtags'
-let g:easytags_autorecurse = 1
-let g:easytags_async = 1
-let g:easytags_auto_update = 1
-let g:easytags_on_cursorhold = 1
-let g:easytags_python_enabled = 1
-let g:easytags_auto_highlight = 0
-let g:easytags_events = ['']
-nmap <leader>ut :UpdateTags!<cr>
+" let g:easytags_by_filetype = '~/.vimtags'
+" let g:easytags_autorecurse = 1
+" let g:easytags_async = 1
+" let g:easytags_auto_update = 1
+" let g:easytags_on_cursorhold = 1
+" let g:easytags_python_enabled = 1
+" let g:easytags_auto_highlight = 0
+" let g:easytags_events = ['']
+" nmap <leader>ut :UpdateTags!<cr>
+
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'git ls-files',
+      \ },
+      \ }
+let g:gutentags_resolve_symlinks = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_write = 1
+nmap <leader>ut :GutentagsUpdate!<cr>
 
 "
 " CtrlP

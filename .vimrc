@@ -472,9 +472,17 @@ map <leader>af :ALEFix<CR>
 
 let g:ale_fixers = {
     \ 'ruby': ['rubocop'] }
+" Disabling due to heavy CPU usage on large projects/files
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
+
+" Lint only on save
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
 "
 " NERDTree
 "

@@ -80,6 +80,7 @@ Plug 'elmcast/elm-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'nikvdp/ejs-syntax'
+Plug 'mhinz/vim-mix-format'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

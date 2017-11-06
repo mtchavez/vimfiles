@@ -730,6 +730,9 @@ let g:go_fmt_command = 'goimports'
 "au BufWritePost *.go !gofmt -w %
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
+" Elixir
+let g:mix_format_on_save = 1
+
 " Ruby
 " compiler ruby
 " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1

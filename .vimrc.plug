@@ -48,7 +48,7 @@ Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'spf13/vim-autoclose'
 Plug 'vim-scripts/sessionman.vim'
@@ -87,6 +87,6 @@ Plug 'justinj/vim-react-snippets'
 
 " vim-scripts repos
 Plug 'L9'
-Plug 'FuzzyFinder'
+" Plug 'FuzzyFinder'
 
 call plug#end()

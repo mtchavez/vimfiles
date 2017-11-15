@@ -762,7 +762,10 @@ let g:elm_format_autosave = 1
 "
 let g:hcl_fmt_autosave=1
 
-noremap <leader><leader>f :Autoformat<CR><CR>
+"
+" Autoformat
+"
+" noremap <leader><leader>f :Autoformat<CR><CR>
 
 " Markdown
 let g:vim_markdown_folding_disabled=1

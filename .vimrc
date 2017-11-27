@@ -357,12 +357,17 @@ let g:ctrlp_custom_ignore = {
       \}
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*,*.log,*.png,*.jpg,*.jpeg,*/\.hg/*,*/\.svn/*,*/node_modules/*
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
+
+if exists('g:ctrlp_user_command')
+  unlet g:ctrlp_user_command
+endif
 
 if executable('ag')
   let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
@@ -377,18 +382,8 @@ else
   let s:ctrlp_fallback = 'find %s -type f'
 endif
 
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_user_command = s:ctrlp_fallback
-" if exists('g:ctrlp_user_command')
-"   unlet g:ctrlp_user_command
-" endif
-"
-" let g:ctrlp_user_command = {
-"       \ 'types': {
-"       \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-"       \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-"       \ },
-"       \ 'fallback': s:ctrlp_fallback
-"       \ }
 
 if isdirectory(expand('~/.vim/plugged/ctrlp-funky/'))
   " CtrlP extensions

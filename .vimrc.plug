@@ -86,7 +86,7 @@ Plug 'mhinz/vim-mix-format'
 Plug 'justinj/vim-react-snippets'
 
 " vim-scripts repos
-Plug 'L9'
+Plug 'vim-scripts/L9'
 " Plug 'FuzzyFinder'
 
 call plug#end()

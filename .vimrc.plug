@@ -20,13 +20,9 @@ endfunction
 "
 call plug#begin()
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'spf13/vim-colors'
 Plug 'tpope/vim-sensible'
 Plug 'easymotion/vim-easymotion'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'jonathanfilip/vim-lucius'
-Plug 'tomasr/molokai'
 Plug 'aclindsa/detectindent'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -55,6 +51,14 @@ Plug 'vim-scripts/sessionman.vim'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 Plug 'ludovicchabant/vim-gutentags'
+
+" Theme
+Plug 'trusktr/seti.vim'
+Plug 'spf13/vim-colors'
+Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'altercation/vim-colors-solarized'
 
 " Language Specific
 Plug 'Glench/Vim-Jinja2-Syntax'

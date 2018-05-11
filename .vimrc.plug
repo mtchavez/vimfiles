@@ -85,6 +85,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'nikvdp/ejs-syntax'
 Plug 'mhinz/vim-mix-format'
+Plug 'dag/vim-fish'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'

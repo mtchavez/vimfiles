@@ -364,8 +364,7 @@ nnoremap <leader>o :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>c :Commands<cr>
 nnoremap <leader>m :Marks<cr>
-nnoremap <leader>gc :Commits<cr>
-nnoremap <leader>gs :GFiles?<cr>
+nnoremap <leader>c :Commits<cr>
 
 fun! ExSetVer(ver)
   let g:alchemist#elixir_erlang_src = "~/.asdf/installs/elixir/" + a:ver

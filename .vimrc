@@ -358,6 +358,20 @@ let g:gutentags_generate_on_write = 1
 nmap <leader>ut :GutentagsUpdate!<cr>
 
 "
+" fzf
+"
+nnoremap <leader>o :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>c :Commands<cr>
+nnoremap <leader>m :Marks<cr>
+nnoremap <leader>gc :Commits<cr>
+nnoremap <leader>gs :GFiles?<cr>
+
+fun! ExSetVer(ver)
+  let g:alchemist#elixir_erlang_src = "~/.asdf/installs/elixir/" + a:ver
+endfun
+
+"
 " CtrlP
 "
 let g:ctrlp_custom_ignore = {

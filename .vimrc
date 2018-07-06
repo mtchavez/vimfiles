@@ -344,7 +344,8 @@ nmap <leader>D :bufdo bd<CR>
 " vim-airline
 "
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
+" let g:airline_theme='molokai'
+let g:airline_theme='onedark'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename

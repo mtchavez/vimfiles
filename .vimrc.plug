@@ -61,6 +61,7 @@ Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'altercation/vim-colors-solarized'
+Plug 'https://github.com/joshdick/onedark.vim.git'
 
 " Language Specific
 Plug 'Glench/Vim-Jinja2-Syntax'

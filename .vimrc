@@ -378,11 +378,13 @@ nmap <leader>ut :GutentagsUpdate!<cr>
 "
 " fzf
 "
-nnoremap <leader>o :Files<cr>
+nnoremap <leader>o :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>c :Commands<cr>
 nnoremap <leader>m :Marks<cr>
-nnoremap <leader>c :Commits<cr>
+nnoremap <leader>t :BTags<cr>
+nnoremap <leader>bc :Commits<cr>
+nnoremap <leader>bc :BCommits<cr>
+nnoremap <leader><leader>c :Commands<cr>
 
 fun! ExSetVer(ver)
   let g:alchemist#elixir_erlang_src = "~/.asdf/installs/elixir/" + a:ver

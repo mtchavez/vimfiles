@@ -378,7 +378,10 @@ nmap <leader>ut :GutentagsUpdate!<cr>
 "
 " fzf
 "
-nnoremap <leader>o :GFiles<cr>
+
+" Command for files with ignore set in ENV
+" set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --glob "!.git/*,!*.log,!node_modules/*,!_build/*,!deps/*,!priv/*"'
+nnoremap <leader>o :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>m :Marks<cr>
 nnoremap <leader>t :BTags<cr>
@@ -389,6 +392,11 @@ nnoremap <leader><leader>c :Commands<cr>
 fun! ExSetVer(ver)
   let g:alchemist#elixir_erlang_src = "~/.asdf/installs/elixir/" + a:ver
 endfun
+
+"
+" FlyGrep
+"
+nnoremap <Space>s/ :FlyGrep<cr>
 
 "
 " CtrlP

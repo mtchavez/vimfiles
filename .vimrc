@@ -221,7 +221,7 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 
 " Lazyredraw attempts to solve Vim lag by reducing processing required. When
 " enabled, any action that is not typed will not cause the screen to redraw.
-set lazyredraw
+" set lazyredraw
 
 " Faster redrawing
 set ttyfast

@@ -66,8 +66,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/joshdick/onedark.vim.git'
 
 " COC
-" Or install latest release tag
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}

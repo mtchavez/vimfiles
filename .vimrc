@@ -381,7 +381,8 @@ nmap <leader>ut :GutentagsUpdate!<cr>
 
 " Command for files with ignore set in ENV
 " set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --glob "!.git/*,!*.log,!node_modules/*,!_build/*,!deps/*,!priv/*"'
-nnoremap <leader>o :Files<cr>
+set rtp+=/usr/local/opt/fzf
+nnoremap <leader>o :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>m :Marks<cr>
 nnoremap <leader>t :BTags<cr>

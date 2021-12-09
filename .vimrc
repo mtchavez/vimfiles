@@ -381,8 +381,7 @@ nmap <leader>ut :GutentagsUpdate!<cr>
 
 " Command for files with ignore set in ENV
 " set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --glob "!.git/*,!*.log,!node_modules/*,!_build/*,!deps/*,!priv/*"'
-set rtp+=/usr/local/opt/fzf
-nnoremap <leader>o :FZF<cr>
+nnoremap <leader>o :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>m :Marks<cr>
 nnoremap <leader>t :BTags<cr>
@@ -517,7 +516,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 map <leader>af :ALEFix<CR>
 
 let g:ale_fixers = {
-    \ 'ruby': ['rubocop'] }
+    \ 'ruby': ['rubocop']}
 " Disabling due to heavy CPU usage on large projects/files
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
@@ -775,6 +774,10 @@ augroup END
 let g:go_fmt_command = 'goimports'
 "au BufWritePost *.go !gofmt -w %
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Rust
+let g:rustfmt_autosave = 1
+let g:ale_rust_cargo_use_clippy = 1
 
 " Elixir
 let g:mix_format_on_save = 1
